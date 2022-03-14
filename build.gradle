@@ -1,0 +1,29 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+//    Gradle并不是专门为构建Android项
+//    目而开发的，Java、C++等很多种项目都可以使用Gradle来构建。因此
+//    如果我们要想使用它来构建Android项目，则需要声
+//    明com.android.tools.build:gradle:2.2.0 这个插件
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.2.0"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,0 +1,50 @@
+plugins {
+//    com.android.application 表示这是一个应用程序块
+    id 'com.android.application'
+}
+//大的android闭包 ，在这个闭包中我们可以配置项目构建的各种属性
+android {
+    compileSdkVersion 32
+//    buildToolsVersion 用于指定项目构建工具的版本
+
+    buildToolsVersion '32.1.0 rc1'
+
+    defaultConfig {
+        applicationId "com.example.hello"
+//        minSdkVersion 用于指定项目最低兼容的Android系统版本
+        minSdkVersion 24
+//        targetSdkVersion 指定的值表示你在该目标版本上已经做过了充分的测试，系统将会为你的应用程序启用一些最新的功能和特性。
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+//            minifyEnabled 用于指定是否对项目的代码进行混淆
+            minifyEnabled false
+//            roguardFiles 用于指定混淆时使用的规则文件
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+//这个闭包的功能非常强大，它可以指定当前项目所
+//有的依赖关系。通常Android Studio项目一共有3种依赖方式：本地依
+//赖、库依赖和远程依赖。本地依赖可以对本地的Jar包或目录添加依赖关
+//系，库依赖可以对项目中的库模块添加依赖关系，远程依赖则可以对
+//jcenter库上的开源项目添加依赖关系。
+dependencies {
+
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
